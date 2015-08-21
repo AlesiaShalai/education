@@ -1,0 +1,1 @@
+default_app_config = 'site3.apps.MyAppConfig'
