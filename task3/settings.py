@@ -12,11 +12,25 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import socket
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 DEBUG = os.environ.get('DEBUG', '1') == '1'
+
+if DEBUG:
+    SECRET_KEY = 'g$6f(p88a)=%yn85@g(^njryt(pmjpdqmqt3hrmb30v1n55+hc'
+else:
+    with open(os.path.join(BASE_DIR, '..', 'key')) as key_file:
+        SECRET_KEY = key_file.read()
+
+if DEBUG:
+    ALLOWED_HOSTS = []
+else:
+    ALLOWED_HOSTS = ['tester.%s' % socket.gethostname()]
+
+INTERNAL_IPS = ('127.0.0.1',)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
