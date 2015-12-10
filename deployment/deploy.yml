@@ -32,8 +32,7 @@
         - postgresql
         - postgresql-server-dev-9.4
         - python-psycopg2
-        - npm
-        - nodejs-legacy
+        - libmysqlclient-dev
 
     - name: add a user
       user: name={{ app_name }} shell=/bin/bash groups=sudo append=yes
