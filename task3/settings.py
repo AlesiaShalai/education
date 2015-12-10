@@ -131,7 +131,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'build_static/'),
+     os.path.join(BASE_DIR, 'static/'),
 )
 
 LANGUAGE_CODE = 'ru-RU'
