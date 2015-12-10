@@ -1,4 +1,5 @@
 Django==1.8.4
+PyMySQL==0.6.7
 defusedxml==0.4.1
 django-allauth==0.23.0
 oauthlib==1.0.3

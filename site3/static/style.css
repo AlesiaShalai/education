@@ -3,3 +3,231 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+h4 {
+    text-align: center;
+    margin: 50px;
+    line-height: 20px;
+}
+
+.description {
+    text-align: left;
+    margin: 70px;
+    margin-top: 30px;
+    line-height: 1.5;
+}
+
+.article-description {
+    margin-top: 20px;
+}
+
+.header_wrap {
+	background-color:#2a2a2a;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:10px;
+	z-index:5;
+}
+
+textarea {
+    max-width: 100%;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.errorlist {
+    color: #a94442;
+    margin-top: 5px;
+    list-style-type: none;
+    padding: 0px 5px;
+}
+
+
+/* navigation bar */
+.navbar.navbar-inverse {
+    border-radius: 0px;
+}
+
+.navbar-inverse .navbar-brand {
+    font-weight: bold;
+    color: #cccccc;
+}
+
+.navbar-inverse .navbar-text.navbar-username {
+    margin-left: 15px;
+    font-weight: bold;
+    color: #cccccc;
+}
+
+
+/* page header */
+.header {
+    font-size: 27px;
+    margin-bottom: 40px;
+}
+
+.jumbotron {
+    padding: 30px 10px;
+}
+
+
+/* index */
+.test-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.test-edit-buttons {
+    margin-left: 5px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-button {
+    margin-left: 5px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+@media screen and (max-width: 500px) {
+    .test-edit-buttons {
+        flex-direction: column;
+    }
+}
+
+
+/* login */
+.social-button {
+    padding: 2px 12px 2px 6px;
+}
+
+.social-logo {
+    width: 28px;
+    height: 28px;
+}
+
+
+/* test page */
+.test-column {
+    margin-bottom: 30px;
+}
+
+.test-question {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    min-height: 100px;
+}
+
+.questions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.questions-heading {
+    margin-left: 15px;
+}
+
+#question-range {
+    margin-bottom: 10px;
+}
+
+#range-error-box {
+    margin-top: 10px;
+    display: none;
+}
+
+.navbar.navbar-inverse {
+    border-radius: 0px;
+}
+
+.navbar-inverse .navbar-brand {
+    font-weight: bold;
+    color: #cccccc;
+}
+
+.navbar-inverse .navbar-text.navbar-username {
+    margin-left: 15px;
+    font-weight: bold;
+    color: #cccccc;
+}
+
+.question-inactive {
+    text-decoration: line-through;
+}
+
+
+/* footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer > p {
+    margin: 0 0;
+}
+
+ul#tab-menu { float:left; width: 210px; background-color: #cccccc; font: normal 18px , serif;
+margin: 0px 10px 0 0; padding: 20px 20px 0px 0px; list-style: none;
+}
+
+ul#tab-menu li {  cursor: pointer; padding: 15px 15px; margin: 0; color: #000000;
+}
+ul#tab-menu li:hover{ color: #cccccc; }
+ul#tab-menu li.selected { color:  #cccccc; no-repeat 182px -3px;
+}
+
+
+.video-list-element {
+    text-align: center;
+}
+
+/* Hack for IE \*/
+* html .ddsmoothmenu { height: 1%; }
+/*Holly Hack for IE7 and below*/
+
+
+/* 3: Content */
+
+/* content wrapper ++++++++++++++++++++++++++++++++++++++++++++ */
+#wrapper { width: 960px; margin: 0 auto; padding: 0px 0px ; line-height: 20px; }
+
+/* content ++++++++++++++++++++++++++++++++++++++++++++ */
+.tab-content { line-height: 22px;padding-bottom:80px; background:transparent; width: 660px; float: left; }
+.tab-content div.tab { display: none; padding: 0; }
+.tab-content div.tab.show { display: block; }
+.tab-content div.tab p { width: 660px; overflow: hidden; padding: 0; margin: 0 0 15px 0;  }
+.tab-content div.tab div p { width: 100%; }
+
+#list1 { }
+#list1 ul { list-style:none; margin-top: 30px; text-align:center; border-top:1px solid #cccccc; border-bottom:1px solid #cccccc; padding:10px 0; }
+#list1 ul li { display:inline; text-transform:uppercase; padding:0 10px; margin: 30px; letter-spacing:6px; }
+#list1 ul li a { text-decoration:none; color:#cccccc; }
+#list1 ul li a:hover { text-decoration:underline; }
