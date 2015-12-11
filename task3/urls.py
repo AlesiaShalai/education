@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^materials/material1','site3.views.material1'),
     url(r'^materials/material2','site3.views.material2'),
     url(r'^materials/material3','site3.views.material3'),
+    url(r'^materials/material4','site3.views.material4'),
+    url(r'^materials/material5','site3.views.material5'),
     url(r'^materials','site3.views.materials'),
     url(r'^tasks','site3.views.tasks'),
     url(r'^links','site3.views.links'),

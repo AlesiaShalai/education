@@ -14,6 +14,12 @@ def material2(request):
 def material3(request):
     return render(request, 'materials/material3.html')
 
+def material4(request):
+    return render(request, 'materials/material4.html')
+
+def material5(request):
+    return render(request, 'materials/material5.html')
+
 def materials(request):
     videos = models.YoutubeVideo.objects.all()
     return render(request, 'materials.html', {"videos": videos})
