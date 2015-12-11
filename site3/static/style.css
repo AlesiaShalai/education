@@ -19,6 +19,8 @@ h3 {
     text-align: center;
     margin-bottom: 20px;
     line-height: 1.5;
+    padding-left: 110px;
+    padding-right: 110px;
 }
 
 h4 {
@@ -35,7 +37,11 @@ h4 {
 }
 
 .article-description {
+    margin-left: 170;
+    margin-right: 170;
     margin-top: 20px;
+    padding-left: 110px;
+    padding-right: 110px;
 }
 
 .header_wrap {
