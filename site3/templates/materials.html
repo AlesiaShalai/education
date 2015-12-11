@@ -41,8 +41,12 @@
 </dl></div>
     <ul>
 {% for video in videos %}
+        <br>
+        <br>
     <li class="video-list-element"><iframe width="800" height="600" src="{{ video.link }}" frameborder="0" allowfullscreen></iframe></li>
-{% endfor %}
+        <br>
+        <br>
+        {% endfor %}
 
         <!--<iframe align="center" class="video-list-element" width=800" height="600" src="https://www.youtube.com/embed/FBAns6D1VOU" frameborder="0" allowfullscreen></iframe>-->
 </ul>
