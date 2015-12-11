@@ -113,11 +113,12 @@ input,
 optgroup,
 select,
 textarea {
-  margin: 0;
+  margin: 300;
   font: inherit;
   color: inherit;
 }
 button {
+  margin: 300;
   overflow: visible;
 }
 button,
@@ -137,8 +138,9 @@ html input[disabled] {
 }
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-  padding: 0;
+
   border: 0;
+  margin: 300;
 }
 input {
   line-height: normal;
@@ -1944,12 +1946,14 @@ pre code {
     width: 91.66666667%;
   }
   .col-md-10 {
+  margin-top: 20px;
     width: 83.33333333%;
   }
   .col-md-9 {
     width: 75%;
   }
   .col-md-8 {
+    margin-top: 20px;
     width: 66.66666667%;
   }
   .col-md-7 {
@@ -1962,7 +1966,9 @@ pre code {
     width: 41.66666667%;
   }
   .col-md-4 {
-    width: 33.33333333%;
+  margin-left: 50px;
+  margin-top: 20px;
+    width: 200px;
   }
   .col-md-3 {
     width: 25%;
@@ -3123,16 +3129,19 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #fff;
+  padding: 300;
   background-color: #337ab7;
   border-color: #2e6da4;
 }
 .btn-primary:focus,
 .btn-primary.focus {
+align: center;
   color: #fff;
   background-color: #286090;
   border-color: #122b40;
 }
 .btn-primary:hover {
+align: center;
   color: #fff;
   background-color: #286090;
   border-color: #204d74;
@@ -3140,6 +3149,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
+align: center;
   color: #fff;
   background-color: #286090;
   border-color: #204d74;
