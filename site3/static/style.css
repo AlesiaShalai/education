@@ -44,13 +44,15 @@ h4 {
 }
 
 .article-description {
-    margin-left: 170;
-    margin-right: 170;
+
     margin-top: 20px;
     padding-left: 110px;
     padding-right: 110px;
 }
 
+p {
+    text-indent: 50px; /* Отступ первой строки в пикселах */
+   }
 
 .header_wrap {
 	background-color:#2a2a2a;
