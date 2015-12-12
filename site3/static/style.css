@@ -29,6 +29,13 @@ h4 {
     line-height: 20px;
 }
 
+.link-description {
+    white-space: nowrap;
+
+
+    line-height: 20px;
+}
+
 .description {
     text-align: left;
     margin: 70px;
@@ -44,14 +51,6 @@ h4 {
     padding-right: 110px;
 }
 
-.link-description {
-    margin-left: 70;
-    margin-right: 70;
-    margin-top: 20px;
-    padding-left: 110px;
-    padding-right: 110px;
-    padding-top: 50;
-}
 
 .header_wrap {
 	background-color:#2a2a2a;
@@ -222,8 +221,12 @@ ul#tab-menu li.selected { color:  #cccccc; no-repeat 182px -3px;
 
 .video-list-element {
     text-align: center;
-    margin-top: 20;
-    padding-top: 20;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.ul-item {
+    list-style-type: none;
 }
 
 /* Hack for IE \*/
