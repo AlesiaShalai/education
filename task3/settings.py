@@ -28,17 +28,12 @@ else:
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['tester.%s' % socket.gethostname()]
+    ALLOWED_HOSTS = ['education.swarmer.me']
 
 INTERNAL_IPS = ('127.0.0.1',)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$c9vc#x($%s!5fw4&-u2eg73te9g#iohkybg$7hv4bs#%gx)tg'
-
-ALLOWED_HOSTS = ['education.swarmer.me']
 
 
 # Application definition
@@ -95,8 +90,8 @@ TEMPLATES = [
 ]
 
 TEMPLATE_LOADERS = (
-'django.template.loaders.filesystem.Loader',
-'django.template.loaders.app_directories.Loader'
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader'
 )
 
 
@@ -125,16 +120,28 @@ WSGI_APPLICATION = 'task3.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sqlite3',
+            'USER': '',
+            'PASSWORD': '',
+            'HOST': '',
+            'PORT': '',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': '3306',
+        }
+    }
 
 
 
