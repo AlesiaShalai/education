@@ -9,11 +9,12 @@
       MEDIA_ROOT: /home/{{ app_name }}/media/
       STATIC_ROOT: /home/{{ app_name }}/static/
 
-  remote_user: root
+  become: true
 
   tasks:
     - name: build a zipball with the source
       local_action: command deployment/build.sh
+      become: false
       args:
         chdir: ..
 
@@ -92,13 +93,6 @@
         APP_NAME: "{{ app_name }}"
 
     # Setting up the app
-    - name: Run init script
-      remote_user: "{{ app_name }}"
-      shell: /home/{{ app_name }}/{{ app_name }}/init.sh
-      args:
-        chdir: /home/{{ app_name }}/{{ app_name }}/
-      environment: production
-
     - name: write the env script
       remote_user: "{{ app_name }}"
       template: src=env.sh dest=/home/{{ app_name }}/env.sh
@@ -106,6 +100,12 @@
     - name: write the run script
       remote_user: "{{ app_name }}"
       template: src=run.sh dest=/home/{{ app_name }}/run.sh
+
+    - name: run migrations
+      remote_user: "{{ app_name }}"
+      shell: bash -c '. /home/{{ app_name }}/env.sh && ./manage.py migrate'
+      args:
+        chdir: /home/{{ app_name }}/{{ app_name }}/
 
     - name: make the run script executable
       remote_user: "{{ app_name }}"

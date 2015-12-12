@@ -1,5 +1,5 @@
 #!/bin/sh
-. db_settings.sh
+. /home/{{ app_name }}/db_settings.sh
 . /home/{{ app_name }}/{{ app_name }}/venv/bin/activate
 export DEBUG=0
 export MEDIA_ROOT=/home/{{ app_name }}/media/
