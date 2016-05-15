@@ -235,6 +235,20 @@ ul#tab-menu li.selected { color:  #cccccc; no-repeat 182px -3px;
 * html .ddsmoothmenu { height: 1%; }
 /*Holly Hack for IE7 and below*/
 
+.gsc-input-box input[type="text"] {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.reset-box-sizing, .reset-box-sizing *, .reset-box-sizing *:before, .reset-box-sizing *:after
+{ -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; }
+input.gsc-input,.gsc-input-box,.gsc-input-box-hover,.gsc-input-box-focus,.gsc-search-button
+{ box-sizing: content-box; line-height: normal;}
+
+.search {
+padding-right: 140px;
+padding-left: 140px;
+}
 
 /* 3: Content */
 
@@ -250,6 +264,6 @@ ul#tab-menu li.selected { color:  #cccccc; no-repeat 182px -3px;
 
 #list1 { }
 #list1 ul { list-style:none; margin-top: 30px; text-align:center; border-top:1px solid #cccccc; border-bottom:1px solid #cccccc; padding:10px 0; }
-#list1 ul li { display:inline; text-transform:uppercase; padding:0 10px; margin: 30px; letter-spacing:6px; }
+#list1 ul li { display:inline; text-transform:uppercase; padding:0 10px; margin: 25px; letter-spacing:3px; }
 #list1 ul li a { text-decoration:none; color:#cccccc; }
 #list1 ul li a:hover { text-decoration:underline; }

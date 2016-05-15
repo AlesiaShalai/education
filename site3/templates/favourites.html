@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h2>{{ "Закладки" }}</h2>
+{% endblock %}
+
+{% block content %}
+
+{% for object in favourite_pages %}
+<p align="center"><a href="/materials/{{ object.article_name }}.html">{{ object.article_name }}</a></p>
+{% endfor %}
+{% endblock %}

@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 
+{% block title %}
+{% if is_favourite %}
+        <a href="/deletefromfavourites/material2">★</a>
+        {% else %}
+        <a href="/addtofavourites/material2">☆</a>
+        {% endif %}
+<h2>{{ "Электронные учебные курсы для электронных продуктов в области образования" }}</h2>
+{% endblock %}
+
 {% block content %}
 
+
 <div class="container-fluid">
-        <h2>{{ "Электронные учебные курсы для электронных продуктов в области образования" }}</h2>
+
    <a href="https://storage.googleapis.com/alesia-project-documents/material2.pdf"> <button type="button" class="btn btn-primary">Download</button></a>
 </div>
 {% endblock %}

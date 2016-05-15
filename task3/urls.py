@@ -16,18 +16,24 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic.base import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^$', 'site3.views.mainpage'),
     url('^', include('django.contrib.auth.urls')),
-    url(r'^materials/material1','site3.views.material1'),
-    url(r'^materials/material2','site3.views.material2'),
-    url(r'^materials/material3','site3.views.material3'),
-    url(r'^materials/material4','site3.views.material4'),
-    url(r'^materials/material5','site3.views.material5'),
+    url(r'^materials/material1.html$','site3.views.material1'),
+    url(r'^materials/material2.html$','site3.views.material2'),
+    url(r'^materials/material3.html$','site3.views.material3'),
+    url(r'^materials/material4.html$','site3.views.material4'),
+    url(r'^materials/material5.html$','site3.views.material5'),
     url(r'^materials','site3.views.materials'),
-    url(r'^tasks','site3.views.tasks'),
+    url(r'^tasks','site3.views.tasks', name='tasks'),
+    url(r'^tests','site3.views.tests'),
     url(r'^links','site3.views.links'),
-]
+    url(r'^favourites','site3.views.favourites'),
+    url(r'^addtofavourites/(?P<pagename>\w+)$','site3.views.create_favourite', name='addtofavourites'),
+    url(r'^deletefromfavourites/(?P<pagename>\w+)$','site3.views.delete_favourite', name='deletefromfavourites')
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -7,7 +7,7 @@
       <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="utf-8">
     <title>education.by</title>
-    <link href="static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
     <script src="/static/jquery.js" defer></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -29,7 +29,10 @@
           </button>
         </div>
 
+
+
         <div id="navbar" class="collapse navbar-collapse">
+
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
               <li class="nav navbar-text navbar-username">{{ user.username }}</li>
@@ -43,13 +46,67 @@
     </nav>
 
     <div class="container">
+      {% block title %}
+      {% endblock %}
+    </div>
+
+
+    <div id="wrapper">
+     <div id="list1">
+        <ul>
+            {% if user.is_authenticated %}
+
+                <li><a href="/materials.html">Материалы</a></li>
+
+                <li><a href="/tests.html">Тесты</a></li>
+
+                <li><a href="/tasks.html">Задания</a></li>
+
+                <li><a href="/favourites.html">Закладки</a></li>
+
+                <li><a href="/links.html">Ссылки</a></li>
+
+            {% else %}
+
+                <li><a href="/materials.html">Материалы</a></li>
+
+                <li><a href="/tests.html">Тесты</a></li>
+
+                <li><a href="/links.html">Ссылки</a></li>
+
+            {% endif %}
+
+        </ul>
+      </div>
+      </div>
+
+    <div class="container-fluid">
+
+      <div class="reset-box-sizing search">
+<script>
+  (function() {
+    var cx = '008463582792396961038:zw77kukbdr0';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+    </div>
+      </div>
+
+    <div class="container">
       {% block content %}
       {% endblock %}
     </div>
 
-</div>
+
 
     <footer>
+
       <p class="text-muted">© 2015 Alesia Shalai</p>
     </footer>
   </body>
