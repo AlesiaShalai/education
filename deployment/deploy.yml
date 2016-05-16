@@ -31,7 +31,7 @@
         - dtrx
         - htop
         - postgresql
-        - postgresql-server-dev-9.4
+        - postgresql-server-dev-9.3
         - python-psycopg2
         - libmysqlclient-dev
 
