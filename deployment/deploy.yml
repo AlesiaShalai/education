@@ -93,6 +93,16 @@
         APP_NAME: "{{ app_name }}"
 
     # Setting up the app
+    - name: setup the database user
+      sudo: yes
+      sudo_user: postgres
+      postgresql_user: name={{ app_name }} role_attr_flags=SUPERUSER
+
+    - name: add a database
+      sudo: yes
+      sudo_user: postgres
+      postgresql_db: name={{ app_name }}
+
     - name: write the env script
       remote_user: "{{ app_name }}"
       template: src=env.sh dest=/home/{{ app_name }}/env.sh
