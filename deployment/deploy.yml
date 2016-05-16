@@ -69,20 +69,23 @@
       file: path=/home/{{ app_name }}/{{ app_name }} state=absent
 
     - name: download the code
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       unarchive: src=../{{ app_name }}.zip dest=/home/{{ app_name }}/
 
     - name: install virtualenv
       command: pip3 install virtualenv
 
     - name: create virtualenv
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       command: virtualenv venv
       args:
         chdir: /home/{{ app_name }}/{{ app_name }}/
 
     - name: install required python packages
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       shell: /home/{{ app_name }}/{{ app_name }}/venv/bin/pip install -r requirements.txt
       args:
         chdir: /home/{{ app_name }}/{{ app_name }}/
@@ -104,36 +107,43 @@
       postgresql_db: name={{ app_name }}
 
     - name: write the env script
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       template: src=env.sh dest=/home/{{ app_name }}/env.sh
 
     - name: write the run script
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       template: src=run.sh dest=/home/{{ app_name }}/run.sh
 
     - name: run migrations
-      remote_user: "{{ app_name }}"
-      shell: bash -c '. /home/{{ app_name }}/env.sh && ./manage.py migrate'
+      sudo: yes
+      sudo_user: "{{ app_name }}"
+      shell: bash -c '. /home/{{ app_name }}/env.sh && whoami > ~/username && ./manage.py migrate'
       args:
         chdir: /home/{{ app_name }}/{{ app_name }}/
 
     - name: make the run script executable
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       file: path=/home/{{ app_name }}/run.sh mode=0775
 
     - name: Delete static directory
       file: path=/home/{{ app_name }}/static state=absent
 
     - name: Create clean static directory
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       file: path=/home/{{ app_name }}/static state=directory
 
     - name: Create media directory
-      remote_user: "{{ app_name }}"
-      file: path=/home/{{ app_name }}/media state=directory
+      sudo: yes
+      sudo_user: "{{ app_name }}"
+      file: path=/home/{{ app_name }}/documents state=directory
 
     - name: Collect static files to be served by nginx
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       shell: /home/{{ app_name }}/{{ app_name }}/venv/bin/python manage.py collectstatic --noinput
       args:
         chdir: /home/{{ app_name }}/{{ app_name }}/

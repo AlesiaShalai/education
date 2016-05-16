@@ -93,8 +93,12 @@ TEMPLATES = [
     },
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
+
 MEDIA_URL = '/documents/'
+if DEBUG:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
+else:
+    MEDIA_ROOT = os.environ['MEDIA_ROOT']
 
 TEMPLATE_LOADERS = (
 'django.template.loaders.filesystem.Loader',
