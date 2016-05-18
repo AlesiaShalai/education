@@ -67,7 +67,7 @@ def favourites(request):
 
 def create_favourite(request, pagename):
     if request.user.is_authenticated():
-        favourite_page = FavouriteArticle(article_name=pagename, user=request.user.id)
+        favourite_page = FavouriteArticle(article_name=pagename, user=request.user)
         favourite_page.save()
     return redirect('/materials/' + pagename + '.html')
 
