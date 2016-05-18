@@ -28,7 +28,7 @@ else:
 if DEBUG:
     ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['tester.%s' % socket.gethostname()]
+    ALLOWED_HOSTS = ['education.%s' % socket.gethostname()]
 
 INTERNAL_IPS = ('127.0.0.1',)
 
@@ -36,7 +36,6 @@ INTERNAL_IPS = ('127.0.0.1',)
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$c9vc#x($%s!5fw4&-u2eg73te9g#iohkybg$7hv4bs#%gx)tg'
 
 ALLOWED_HOSTS = ['education.swarmer.me']
 
@@ -94,8 +93,12 @@ TEMPLATES = [
     },
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
+
 MEDIA_URL = '/documents/'
+if DEBUG:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'documents')
+else:
+    MEDIA_ROOT = os.environ['MEDIA_ROOT']
 
 TEMPLATE_LOADERS = (
 'django.template.loaders.filesystem.Loader',
@@ -128,16 +131,26 @@ WSGI_APPLICATION = 'task3.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sqlite3',
+            'USER': '',
+            'PASSWORD': '',
+            'HOST': '',
+            'PORT': '',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'HOST': '',
+            'NAME': 'education',
+            'USER': 'education',
+        }
+    }
 
 
 

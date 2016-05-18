@@ -22,7 +22,7 @@
       apt: pkg={{ item }} state=latest
       with_items:
         - nginx
-        - python3.5-dev
+        - python3-dev
         - python3-pip
         - git
         - build-essential
@@ -31,7 +31,7 @@
         - dtrx
         - htop
         - postgresql
-        - postgresql-server-dev-9.4
+        - postgresql-server-dev-9.3
         - python-psycopg2
         - libmysqlclient-dev
 
@@ -69,20 +69,23 @@
       file: path=/home/{{ app_name }}/{{ app_name }} state=absent
 
     - name: download the code
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       unarchive: src=../{{ app_name }}.zip dest=/home/{{ app_name }}/
 
     - name: install virtualenv
       command: pip3 install virtualenv
 
     - name: create virtualenv
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       command: virtualenv venv
       args:
         chdir: /home/{{ app_name }}/{{ app_name }}/
 
     - name: install required python packages
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       shell: /home/{{ app_name }}/{{ app_name }}/venv/bin/pip install -r requirements.txt
       args:
         chdir: /home/{{ app_name }}/{{ app_name }}/
@@ -93,37 +96,54 @@
         APP_NAME: "{{ app_name }}"
 
     # Setting up the app
+    - name: setup the database user
+      sudo: yes
+      sudo_user: postgres
+      postgresql_user: name={{ app_name }} role_attr_flags=SUPERUSER
+
+    - name: add a database
+      sudo: yes
+      sudo_user: postgres
+      postgresql_db: name={{ app_name }}
+
     - name: write the env script
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       template: src=env.sh dest=/home/{{ app_name }}/env.sh
 
     - name: write the run script
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       template: src=run.sh dest=/home/{{ app_name }}/run.sh
 
     - name: run migrations
-      remote_user: "{{ app_name }}"
-      shell: bash -c '. /home/{{ app_name }}/env.sh && ./manage.py migrate'
+      sudo: yes
+      sudo_user: "{{ app_name }}"
+      shell: bash -c '. /home/{{ app_name }}/env.sh && whoami > ~/username && ./manage.py migrate'
       args:
         chdir: /home/{{ app_name }}/{{ app_name }}/
 
     - name: make the run script executable
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       file: path=/home/{{ app_name }}/run.sh mode=0775
 
     - name: Delete static directory
       file: path=/home/{{ app_name }}/static state=absent
 
     - name: Create clean static directory
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       file: path=/home/{{ app_name }}/static state=directory
 
     - name: Create media directory
-      remote_user: "{{ app_name }}"
-      file: path=/home/{{ app_name }}/media state=directory
+      sudo: yes
+      sudo_user: "{{ app_name }}"
+      file: path=/home/{{ app_name }}/documents state=directory
 
     - name: Collect static files to be served by nginx
-      remote_user: "{{ app_name }}"
+      sudo: yes
+      sudo_user: "{{ app_name }}"
       shell: /home/{{ app_name }}/{{ app_name }}/venv/bin/python manage.py collectstatic --noinput
       args:
         chdir: /home/{{ app_name }}/{{ app_name }}/
