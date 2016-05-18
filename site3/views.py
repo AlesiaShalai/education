@@ -62,14 +62,15 @@ def links(request):
     return render(request, 'links.html')
 
 def favourites(request):
-    favourite_pages = FavouriteArticle.objects.filter(user=request.user)
+    favourite_pages = FavouriteArticle.objects.filter(user=request.user.id)
     return render(request, 'favourites.html', {"favourite_pages": favourite_pages})
 
 def create_favourite(request, pagename):
-    favourite_page = FavouriteArticle(article_name=pagename, user=request.user)
-    favourite_page.save()
+    if request.user.is_authenticated():
+        favourite_page = FavouriteArticle(article_name=pagename, user=request.user.id)
+        favourite_page.save()
     return redirect('/materials/' + pagename + '.html')
 
 def delete_favourite(request, pagename):
-    FavouriteArticle.objects.filter(user=request.user, article_name=pagename).delete()
+    FavouriteArticle.objects.filter(user=request.user.id, article_name=pagename).delete()
     return redirect('/materials/' + pagename + '.html')
